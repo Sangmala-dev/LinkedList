@@ -1,0 +1,64 @@
+/******************************************************************************
+Compare the data in the nodes of the linked lists to check if they are equal. 
+If all data attributes are equal and the lists are the same length, return
+. Otherwise, return .
+Input
+list1 : 1->2->3
+list2 : 1->2->3->4
+Output 0
+Input
+list1 : 1->2->3
+list2 : 1->2->3
+Output 1
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+    static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data = data;
+            next = null;
+        }
+    }
+    public static boolean compreLists(Node head1, Node head2){
+        
+        while(head1 != null && head2 != null){
+            if(head1.data != head2.data)
+                return false;
+            
+            head1 = head1.next;
+            head2 = head2.next;
+            
+        }
+        return head1 == null && head2 == null;
+    }
+    
+    static Node buildList(Scanner sc, int n){
+        if(n ==0) return null;
+        Node head = new Node(sc.nextInt());
+        Node curr = head;
+        for(int i=1; i<n; i=i+1){
+            curr.next = new Node(sc.nextInt());
+            curr = curr.next;
+        }
+        return head;
+    }
+    
+	public static void main(String[] args) {
+		//Create list
+		Scanner sc = new Scanner(System.in);
+       
+       
+       int n1 = sc.nextInt();
+       Node head1 = buildList(sc, n1);
+       
+       int n2 = sc.nextInt();
+       Node head2 = buildList(sc, n2);
+       
+       System.out.println(compreLists(head1, head2)? 1 : 0);
+	}
+        
+	
+}
