@@ -1,0 +1,38 @@
+/******************************************************************************
+If the interviewer asks “Why two stacks?”
+
+Answer:
+
+One stack stores all elements, and the second stack stores the maximum values 
+so we can retrieve the maximum element in 
+constant time instead of scanning the whole stack.
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int q = sc.nextInt();
+		Stack<Integer> st = new Stack<>();
+		Stack<Integer> max = new Stack<>();
+		
+		while(q --> 0){
+		    int type = sc.nextInt();
+		    
+		    if(type == 1){
+		        int x = sc.nextInt();
+		        st.push(x);
+		        if(max.isEmpty() || x >= max.peek())
+		            max.push(x);
+		    }else if(type == 2){
+		        int remove = st.pop();
+		        if(remove == max.peek())
+		            max.pop();
+		    }else if(type == 3){
+		        System.out.println(max.peek());
+		    }
+		    
+		}
+	}
+
+}
